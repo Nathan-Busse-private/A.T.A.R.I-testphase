@@ -17,7 +17,7 @@ tempC = analogRead(tempPin);           //read the value from the sensor
 tempC = (5.0 * tempC * 100.0)/1024.0;  //convert the analog data to temperature
 Serial.println((byte)tempC);             //send the data to the computer
 
-if(tempC<0){
+if(tempC<0){ // stays on blue
 analogWrite(bluePin, 255);}
 else if(tempC>0&&tempC<=45){
 blueTemp= map(tempC, 0, 45, 255, 0);
@@ -25,21 +25,21 @@ analogWrite(bluePin, blueTemp);}
 else if(tempC>37){
 analogWrite(bluePin, 0);}
 
-if(tempC<35){
+if(tempC<75){ // changes to green
 analogWrite(greenPin, 0);}
-else if(tempC>15&&tempC<=35){
-greenTemp = map(tempC, 15, 35, 1, 254);
+else if(tempC>75&&tempC<=75){
+greenTemp = map(tempC, 75, 80, 1, 254);
 analogWrite(greenPin, greenTemp);}
-else if(tempC>39&&tempC<=75){
-greenTemp = map(tempC, 35, 75, 255, 0);
+else if(tempC>76&&tempC<=80){
+greenTemp = map(tempC, 80, 86, 255, 0);
 analogWrite(greenPin, greenTemp);}
-else if(tempC>75){
+else if(tempC>80){
 analogWrite(greenPin, 0);}
 
-if(tempC<45){
+if(tempC<140){  // Changes to red
 analogWrite(redPin, 0);}
-else if(tempC>=75){
-redTemp= map(tempC, 75, 90, 1, 255);
+else if(tempC>=150){
+redTemp= map(tempC, 150, 149, 1, 255);
 analogWrite(redPin, redTemp);}
 else if(tempC>150){
 analogWrite(redPin, 255);}
