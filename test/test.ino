@@ -1,5 +1,5 @@
 float tempC;
-int tempPin = 0;
+int tempPin = A0;
 int redPin= 4;
 int greenPin= 13;
 int bluePin= 5;
@@ -22,15 +22,15 @@ analogWrite(bluePin, 255);}
 else if(tempC>0&&tempC<=45){
 blueTemp= map(tempC, 0, 45, 255, 0);
 analogWrite(bluePin, blueTemp);}
-else if(tempC>45){
+else if(tempC>37){
 analogWrite(bluePin, 0);}
 
-if(tempC<15){
+if(tempC<35){
 analogWrite(greenPin, 0);}
 else if(tempC>15&&tempC<=35){
 greenTemp = map(tempC, 15, 35, 1, 254);
 analogWrite(greenPin, greenTemp);}
-else if(tempC>35&&tempC<=75){
+else if(tempC>39&&tempC<=75){
 greenTemp = map(tempC, 35, 75, 255, 0);
 analogWrite(greenPin, greenTemp);}
 else if(tempC>75){
@@ -38,11 +38,11 @@ analogWrite(greenPin, 0);}
 
 if(tempC<45){
 analogWrite(redPin, 0);}
-else if(tempC>=45){
-redTemp= map(tempC, 45, 90, 1, 255);
+else if(tempC>=75){
+redTemp= map(tempC, 75, 90, 1, 255);
 analogWrite(redPin, redTemp);}
-else if(tempC>90){
+else if(tempC>150){
 analogWrite(redPin, 255);}
 
-delay(1000);                           //wait 200 ms before sending new data
+delay(1000);                           //wait 1000 ms before sending new data
 }
